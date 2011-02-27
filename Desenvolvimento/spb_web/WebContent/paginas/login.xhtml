@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+<h:head><title>Spb Web</title></h:head>
+	
+<h:body>     
+<h:form id="formLogin" prependId="false">
+<p:panel header="Efetuar Login" footer="SpbWeb" closable="false"  style="margin-bottom:10px;">
+<h:panelGrid columns="3"> 
+<h:outputLabel for="apelido" value="Apelido: "/>
+<p:inputText maxlength="20" required="true"  value="#{employeController.nameEmploye}" requiredMessage="É obrigatório o preenchimento do campo 'Apelido'!" id="apelido"/>
+<p:message for="apelido"/>
+<h:outputLabel value="Senha: " for="senha"/>
+<h:inputSecret maxlength="20" required="true" requiredMessage="É obrigatório o preenchimento do campo 'Senha'!" id="senha"/>
+<p:message for="senha"/>
+</h:panelGrid>
+<h:commandButton value="Entrar" action="#{employeController.logarUser}" />
+</p:panel>
+</h:form>
+</h:body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://java.sun.com/jsf/composite/primefaces">
+	
+	<title>Spb Web</title>
+	
+<h:body>
+
+<h1> Sistema de Ponto Biométrico</h1>
+
+<h:outputLabel value="Escolha a Opção de Autenticação"/>
+<h:selectOneRadio >
+<f:selectItem itemLabel="Senha"></f:selectItem>
+<f:selectItem itemLabel="Biometria"></f:selectItem>
+</h:selectOneRadio>
+
+<h:commandButton value="Entrar" ></h:commandButton>
+
+</h:body>
+
+</html>

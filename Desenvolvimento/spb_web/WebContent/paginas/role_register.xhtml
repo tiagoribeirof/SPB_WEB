@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<h:head><title>Spb Web</title></h:head>
+	
+<h:body>     
+
+<h:form id="formOffice" prependId="false" >
+<p:panel header="Cadastrar Cargo" footer="Spb Web" >
+<h:panelGrid columns="3"  > 
+<h:outputLabel for="cargo" value="Cargo: "/>
+<p:inputText maxlength="20" required="true"  value="#{roleController.nameRole}" requiredMessage="É obrigatório o preenchimento do campo 'Cargo'!" id="cargo"/>
+<p:message for="cargo" />
+</h:panelGrid>
+<h:commandButton value="Salvar" action="#{roleController.saveRole}" />
+</p:panel>
+</h:form> 
+</h:body>
+
+</html>
