@@ -15,16 +15,29 @@ import br.com.spbweb.negocio.RoleBusiness;
 @ManagedBean
 @ViewScoped
 public class RoleController {
-	
+
 	private Long idRole;
-	
+
 	private String nameRole;
-	
+
 	private int levelRole;
-	
+
 	private List<Role> role;
 
-	
+	private Role roleSimple= new Role() ;
+
+
+
+
+	public Role getRoleSimple() {
+
+		return roleSimple;
+	}
+
+	public void setRoleSimple(Role roleSimple) {
+		this.roleSimple = roleSimple;
+	}
+
 	public List<Role> getRole() {
 		return role;
 	}
@@ -52,31 +65,54 @@ public class RoleController {
 	public void setLevelRole(int levelRole) {
 		this.levelRole = levelRole;
 	}
-	
-	public void saveRole() throws Exception{
-		if(!nameRole.equals("")){
+
+	public String saveRole() throws Exception{
+		if(!roleSimple.getRoleName().equals("")){
 			RoleBusiness business = new RoleBusiness();
-		    business.SaveRole(this.nameRole);
-						
+			business.saveRole(roleSimple);
+
 		}
-		
-		
+
+        return "page_main.jsf";    
 	}
-	
-	
+
+
 	public void queryRole() throws Exception{
+		RoleBusiness roleBusiness = null;
 		if(nameRole.equals("")){
-			RoleBusiness roleBusiness = new RoleBusiness();
+			roleBusiness = new RoleBusiness();
 			role = roleBusiness.allRoles();
+		}else{
+			roleBusiness = new RoleBusiness();
+			role = roleBusiness.autoCompleteQuery(nameRole);	
 		}
-		
+
 	}
-	
-	
+
+
 	public List<String> complete(String name) throws Exception {
 		RoleBusiness roleBusiness = new RoleBusiness();
-		List<String> results = new ArrayList<String>();	
-		results = roleBusiness.autoCompleteQuery(name);			
+		role = roleBusiness.autoCompleteQuery(name);	
+		List <String> results = new ArrayList<String>();
+		for(int x =0; x<role.size();x++){
+			Role role = this.role.get(x);
+			results.add(role.getRoleName());
+		}
 		return results;
+	}
+
+
+	public void updateRole() throws Exception{
+		if(!roleSimple.getRoleName().equals("")){
+			RoleBusiness roleBusiness = new RoleBusiness();
+			roleBusiness.updateRole(roleSimple);
+		}
+	}
+
+
+	public void deleteRole() throws Exception{	System.out.println("kkkkk");	
+		RoleBusiness roleBusiness = new RoleBusiness();
+		roleBusiness.deleteRole(roleSimple);
+
 	}
 }

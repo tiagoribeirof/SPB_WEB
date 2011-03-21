@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head>
+
+ <title>SpbWeb</title>
+ </h:head>
+ <h:body>
+ <div id="header" align="left">
+ <img src="../images/logoMenu.png"/>
+ 
+ </div>
+	<h:form>
+
+
+			<p:menubar autoSubmenuDisplay="true">
+				<p:submenu label="Cargos">
+					<p:menuitem value="Cadastrar" url="/paginas/role_register.jsf"
+						ajax="true" />
+					<p:menuitem value="Consultar" url="/paginas/role_query.jsf"
+						helpText="CTRL+O" ajax="false" />
+
+				</p:submenu>
+
+			</p:menubar>
+
+		</h:form>
+
+<ui:insert name="content"></ui:insert>
+ <div id="footer" style="text-align: center;position: absolute; bottom: 2px; "  >
+ <hr />
+ &copy; 2011 Sistema de Ponto Biométrico para Web
+ </div>
+ </h:body>
+ </html>

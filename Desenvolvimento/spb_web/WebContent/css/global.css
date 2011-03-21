@@ -1,0 +1,26 @@
+.imgBotao {
+        background-image: url("/images/edit.png") !important;
+}
+
+
+.ico_cad_exc{
+	border:0px;
+}
+
+
+.login{
+	width: 400px;
+	height: 300px;
+	vertical-align: middle;
+	position: absolute;
+	left: 470px;
+	top: 205px;
+	
+	
+	
+}
+.footer{
+	bottom: 800px;
+	top: 800px;
+	
+}	

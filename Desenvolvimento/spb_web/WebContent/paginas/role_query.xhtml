@@ -1,67 +1,94 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="../paginas/template/templatePrincipal.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.prime.com.tr/ui">
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head>
+	<link type="text/css" rel="stylesheet" href="../css/global.css" />
 	
-	<h:head><title>Spb Web</title></h:head>
-	
-<h:body>     
+</h:head>
+<ui:define name="content">
+<h:body>
+	<!-- Formulario de pesquisa de cargos -->
 
-<h:form id="formOffice" prependId="false" >
-<p:panel header="Consultar Cargos" footer="Spb Web" >
-<h:panelGrid columns="2"  > 
+	<h:form id="formOffice" prependId="false">
+		<p:panel header="Consultar Cargos" footer="Spb Web">
+			<h:panelGrid columns="2">
 
-<h:outputLabel  value="Cargo: " for="autoCompleteCargo"/>
-	<p:autoComplete id="autoCompleteCargo" value="#{roleController.nameRole}" 
-					completeMethod="#{roleController.complete}" minQueryLength="3"/>
-			
-<!--<p:inputText maxlength="20" required="true"  value="#{roleController.nameRole}"  id="cargo"/>-->
-
-</h:panelGrid>
-<h:commandButton value="Consultar" action="#{roleController.queryRole}" />
-</p:panel>
-<p:dataTable var="tabRole" id="roleList" paginator="true" paginatorPosition="bottom" rows="5" value="#{roleController.role}" rendered="#{not empty roleController.role}">
-        <p:column headerText="Cargo">
-            <p:cellEditor>
-                <f:facet name="output">
-                    <h:outputText value="#{tabRole.roleName}" />
-                </f:facet>
-                <f:facet name="input">
-                   <p:inputText value="#{tabRole.roleName}" style="width:100%"/>
-                </f:facet>
-            </p:cellEditor>
-        </p:column>
-
-        <p:column headerText="Perfil Administrativo" >
-            <p:cellEditor>
-                <f:facet name="output">
-                    <h:outputText value="#{tabRole.roleName}" />
-                </f:facet>
-                <f:facet name="input">
-                    <p:inputText value="#{tabRole.roleName}" style="width:100%"/>
-                </f:facet>
-            </p:cellEditor>
-        </p:column>
-       <p:column style="width:32px">
-            <p:commandButton update="display" oncomplete=""
-                    image="ui-icon ui-icon-search">
-                <f:setPropertyActionListener value="#{car}"
-                    target="" />
-            </p:commandButton>
-        </p:column>
-        
+				<h:outputLabel value="Cargo: " for="autoCompleteCargo" />
+				<p:autoComplete id="autoCompleteCargo"
+					value="#{roleController.nameRole}"
+					completeMethod="#{roleController.complete}" minQueryLength="3" />
 
 
-</p:dataTable>
-</h:form> 
+
+			</h:panelGrid>
+
+			<h:commandButton value="Consultar"
+				action="#{roleController.queryRole}" />
+		</p:panel>
+		<!-- Tabela com o resultado da pesquisa de cargos -->
+
+		<p:dataTable var="tabRole" id="roleList" paginator="true"
+			paginatorPosition="bottom" rows="5" value="#{roleController.role}"
+			rendered="#{not empty roleController.role}">
+			<p:column headerText="Cargo">
+				<h:outputText value="#{tabRole.roleName}" />
+			</p:column>
+
+			<p:column headerText="Perfil Administrativo">
+				<h:outputText value="#{tabRole.roleLevel == 1 ? 'Sim' : 'Não'}" />
+			</p:column>
+
+			<p:column>
+				<p:commandLink update="display" oncomplete="roleDialog.show()">
+					<h:graphicImage value="../images/edit.png" styleClass="ico_cad_exc" />
+					<f:setPropertyActionListener value="#{tabRole}"
+						target="#{roleController.roleSimple}" />
+
+				</p:commandLink>
+			</p:column>
+			<p:column>
+				<h:commandButton image="../images/eraser.png" action="#{roleController.deleteRole}">
+			<f:setPropertyActionListener value="#{tabRole}"
+						target="#{roleController.roleSimple}" />
+			</h:commandButton>			
+			</p:column>
+
+		</p:dataTable>
+		<!--  DialogBox para alterar dados do cargo -->
+
+		<p:dialog header="Alterar Cargo" widgetVar="roleDialog"
+			resizable="false" width="450" showEffect="explode"
+			hideEffect="explode">
+
+			<h:panelGrid id="display" columns="2" cellpadding="4">
+
+
+				<h:outputText value="Cargo:" />
+				<h:inputText value="#{roleController.roleSimple.roleName}" />
+
+				<h:outputText value="Perfil Administrativo:" />
+				<h:selectOneMenu value="#{roleController.roleSimple.roleLevel}">
+					<f:selectItem itemLabel="Sim" itemValue="1" />
+					<f:selectItem itemLabel="Não" itemValue="0" />
+				</h:selectOneMenu>
+
+				<p:commandButton value="Atualizar"
+					action="#{roleController.updateRole}"  oncomplete="roleDialog.hide();" />
+			</h:panelGrid>
+
+		</p:dialog>
+
+	</h:form>
 </h:body>
+</ui:define>
+</ui:composition>
 
-</html>
 
 
-	
-			

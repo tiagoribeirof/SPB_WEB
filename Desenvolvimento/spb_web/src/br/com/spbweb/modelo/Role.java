@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="TB_ROLE")
 @NamedQueries({
-	 @NamedQuery(name = "pesquisaAutoComplete", query = "SELECT r.roleName FROM "
+	 @NamedQuery(name = "pesquisaAutoComplete", query = "SELECT r FROM "
 	        + "Role r WHERE (r.roleName) like (?0) ORDER BY r.roleName")})
 
 public class Role implements Serializable{
