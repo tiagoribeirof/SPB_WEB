@@ -8,11 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="TB_EMPLOYEE")
+@NamedQueries({
+	 @NamedQuery(name = "pesquisaLogin", query = "SELECT e FROM "
+	        + "Employee e WHERE e.nickName = :nickname and e.password = :password")})
+
 public class Employee implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -39,7 +45,7 @@ public class Employee implements Serializable{
 	
 	private String registration;
 	
-	@Column(name="NM_NICKNAME")
+	
     private String nickName;
     
     private String address;

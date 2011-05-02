@@ -19,8 +19,25 @@
 	
 	
 }
+
+.classMessages{
+	font:bold;
+	font-family:arial;
+	color:rgb(255,6,6);
+}	
+	
+	
+	
+.nameUser{
+	vertical-align: text-top;
+	position: absolute;
+	right: 20px;
+	top:97px;
+	color: rgb(33,137,163);
+}	
 .footer{
 	bottom: 800px;
 	top: 800px;
 	
-}	
+}
+

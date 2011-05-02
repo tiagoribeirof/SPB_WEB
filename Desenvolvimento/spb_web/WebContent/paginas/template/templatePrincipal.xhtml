@@ -2,40 +2,48 @@
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 
 <h:head>
+	<link type="text/css" rel="stylesheet" href="../css/global.css" />
+	<script type="text/javascript" src="../js/jquery.alphanumeric.js"></script>
+	<script type="text/javascript" src="../js/role.js"></script>
 
- <title>SpbWeb</title>
- </h:head>
- <h:body>
- <div id="header" align="left">
- <img src="../images/logoMenu.png"/>
- 
- </div>
+	<title>SpbWeb</title>
+</h:head>
+<h:body>
+	<div id="header" align="left"><a href="../paginas/page_main.jsf"
+		title="home"><img src="../images/logoMenu.png" border="0px" /></a></div>
+	<div id="user" class="nameUser">Bem vindo:
+	#{loginController.employee.nickName}</div>
+
 	<h:form>
 
 
-			<p:menubar autoSubmenuDisplay="true">
-				<p:submenu label="Cargos">
-					<p:menuitem value="Cadastrar" url="/paginas/role_register.jsf"
-						ajax="true" />
-					<p:menuitem value="Consultar" url="/paginas/role_query.jsf"
-						helpText="CTRL+O" ajax="false" />
+		<p:menubar autoSubmenuDisplay="true">
+			<p:submenu label="Cargos">
+				<p:menuitem value="Cadastrar" url="/paginas/role_register.jsf"
+					ajax="true" />
+				<p:menuitem value="Consultar" url="/paginas/role_query.jsf"
+					helpText="CTRL+O" ajax="false" />
 
-				</p:submenu>
+			</p:submenu>
+			<p:submenu label="Funcionários">
+				<p:menuitem value="Cadastrar" action="#{employerController.teste}"/>
+				<p:menuitem value="Consultar" />
+			</p:submenu>
 
-			</p:menubar>
+		</p:menubar>
 
-		</h:form>
+	</h:form>
 
-<ui:insert name="content"></ui:insert>
- <div id="footer" style="text-align: center;position: absolute; bottom: 2px; "  >
- <hr />
- &copy; 2011 Sistema de Ponto Biométrico para Web
- </div>
- </h:body>
- </html>
+	<ui:insert name="content"></ui:insert>
+	<div id="footer"
+		style="text-align: center; position: absolute; bottom: 2px;">
+	<hr />
+	&copy; 2011 Sistema de Ponto Biométrico para Web</div>
+</h:body>
+</html>

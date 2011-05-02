@@ -16,10 +16,10 @@
 		<p:panel header="Cadastrar Cargo" footer="Spb Web">
 			<h:panelGrid columns="3">
 				<h:outputLabel for="cargo" value="Cargo: " />
-				<p:inputText maxlength="20" required="true"
+				<p:inputMask  mask="********************"  maxlength="20" required="true"
 					value="#{roleController.roleSimple.roleName}"
 					requiredMessage="É obrigatório o preenchimento do campo 'Cargo'!"
-					id="cargo" />
+					id="cargo"  />
 				<p:message for="cargo" />
 				<h:outputText value="Perfil Administrativo:" />
 				<h:selectOneMenu value="#{roleController.roleSimple.roleLevel}">

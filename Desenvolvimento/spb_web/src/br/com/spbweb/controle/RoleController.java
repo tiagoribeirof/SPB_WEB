@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
-import br.com.spbweb.bean.RoleBean;
 import br.com.spbweb.modelo.Role;
 import br.com.spbweb.negocio.RoleBusiness;
 
@@ -25,8 +23,7 @@ public class RoleController {
 	private List<Role> role;
 
 	private Role roleSimple= new Role() ;
-
-
+ 
 
 
 	public Role getRoleSimple() {
@@ -110,7 +107,7 @@ public class RoleController {
 	}
 
 
-	public void deleteRole() throws Exception{	System.out.println("kkkkk");	
+	public void deleteRole() throws Exception{		
 		RoleBusiness roleBusiness = new RoleBusiness();
 		roleBusiness.deleteRole(roleSimple);
 

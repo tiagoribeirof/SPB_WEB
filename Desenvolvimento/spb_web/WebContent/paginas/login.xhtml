@@ -12,23 +12,22 @@
 	<ui:define name="conteudo">
 		
 			<h:form id="formLogin" prependId="false" styleClass="login">
+			<h:messages styleClass="classMessages" /> 
 				<p:panel header="Efetuar Login" closable="false"
 					style="margin-bottom:10px;">
-					<h:panelGrid columns="3">
-						<h:outputLabel for="apelido" value="Apelido: " />
+					<h:panelGrid columns="2">
+					 <h:outputLabel value="Apelido: " />
 						<p:inputText maxlength="20" required="true"
-							value="#{employeController.nameEmploye}"
+							value="#{loginController.employee.nickName}"
 							requiredMessage="É obrigatório o preenchimento do campo 'Apelido'!"
 							id="apelido" />
-						<p:message for="apelido" />
-						<h:outputLabel value="Senha: " for="senha" />
-						<h:inputSecret maxlength="20" required="true"
+						<h:outputLabel value="Senha: "  />
+						<h:inputSecret maxlength="20" required="true" 
 							requiredMessage="É obrigatório o preenchimento do campo 'Senha'!"
-							id="senha" />
-						<p:message for="senha" />
-					</h:panelGrid>
+							id="senha" value="#{loginController.employee.password}" />
+						</h:panelGrid>
 					<h:commandButton value="Entrar"
-						action="#{employeController.logarUser}" />
+						action="#{loginController.logarUser}" />
 				</p:panel>
 			</h:form>
 		
